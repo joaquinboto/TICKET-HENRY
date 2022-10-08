@@ -1,15 +1,56 @@
-# TICKET-HENRY
-Descripcion: Proyecto final realizado en el Bootcamp de Henry, en una colaboracion con 6 programadores.
+# Project React JS - CODER HOUSE
 
-#Install
+Tienda online de Ropa.
 
-npm i axios
-npm i dotenv
-npm i cors (inside api folder)
+## Preview
 
-Technologies that would be used all the way along the proyect:
-React.js
-Tailwind
-Express JS
-Node.js
-PostreSQL
+![Logo](https://media.giphy.com/media/cMO3J9Fl5qwK34Idoe/giphy.gif)
+
+
+## Funcionalidades
+
+USUARIO:
+- Autenticacion , envio de email de bienvenida.
+- Perfil del usuario, cambio de contraseña, foto de perfil , nombre , eliminar cuenta. Seccion de eventos favoritos.
+- Menú con las secciones shop y carrito.
+- Dentro de shop listado de todos los eventos disponibles, se puede filtrar por categorias , artistas y lugares.
+- Dentro del carrito listado de todos los productos y el total de la compra.
+- Dentro del checkout feedback de la compra realizada , envio de email con detalle de la compra.
+
+ADMIN:
+- Dashboard de admin
+- 
+
+## Tecnologías usadas en el proyecto:
+
+- React
+- Tailwind
+- Node
+- Postgres
+- Firebase
+
+
+## Authors
+
+Joaquin Boto - [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/joaquinboto)
+Luis Daniel Rios Barba - [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luisdanielrios) 
+Cristian Albornoz - [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/cristian-gabriel-albornoz-06bb07238) 
+Horus Camacho - [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/horus-camacho-80188a1a8)
+Jonatan Musciachio - [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jonatanmusciachio)
+Luciano Coronel - [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luciano-coronel-90503bb8/)
+
+
+
+
+
+
+## Instalacion
+
+In the project directory, you can run:
+
+## `git clone https://github.com/joaquinboto/TICKET-HENRY.git`
+
+## `npm i`
+
+### On folder /client `npm run dev`
+### On folder /api `npm start`
