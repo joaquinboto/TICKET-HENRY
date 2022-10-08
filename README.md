@@ -1,11 +1,6 @@
-# Project React JS - CODER HOUSE
+# Project React JS - HENRY TICKET
 
-Tienda online de Ropa.
-
-## Preview
-
-![Logo](https://media.giphy.com/media/cMO3J9Fl5qwK34Idoe/giphy.gif)
-
+Tienda online de eventos
 
 ## Funcionalidades
 
@@ -19,7 +14,8 @@ USUARIO:
 
 ADMIN:
 - Dashboard de admin
-- 
+- Seccion para crear eventos.
+- Dentro del dashboard de admin: Carritos activos y desactivados con sus resumenes de compra. Listado de usuario , donde se puede asignar roles , banear o desbanear un usuario , eventos activos, eliminarlos o editarlos. 
 
 ## Tecnologías usadas en el proyecto:
 
