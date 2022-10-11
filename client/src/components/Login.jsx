@@ -72,7 +72,6 @@ function Login() {
     dispatch(loginAuth(input));
     setInput({
       email: "",
-      
       password: "",
     });
 
