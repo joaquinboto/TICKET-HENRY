@@ -17,7 +17,7 @@ const mercadopagoPayment = async (req, res) => {
             back_urls: {
                 failure: "/failure",
                 pending: "/pending",
-                success: "http://localhost:5173/private/payment/success",
+                success: "https://tickethenry.vercel.app/private/payment/success",
             },
             auto_return: "approved",
         };
