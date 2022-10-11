@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import Img1 from "../../assets/carousel/Img1.jpg";
-import Img2 from "../../assets/carousel/Img2.jpg";
+import Img2 from "../../assets/carousel/img2.jpg";
 import Img3 from "../../assets/carousel/Img3.jpg";
 
 export default function Carrousel() {
