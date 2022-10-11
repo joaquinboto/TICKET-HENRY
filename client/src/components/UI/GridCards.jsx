@@ -4,10 +4,6 @@ import {
   LockClosedIcon,
   StarIcon,
 } from "@heroicons/react/24/outline";
-import Img1 from "../../assets/carousel/Img1.jpg";
-import Img2 from "../../assets/carousel/Img2.jpg";
-import Img3 from "../../assets/carousel/Img3.jpg";
-import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function GridCards({ eventos }) {
