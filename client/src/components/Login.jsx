@@ -73,6 +73,7 @@ function Login() {
     setInput({
       email: "",
       password: "",
+      
     });
 
     if(user) {
