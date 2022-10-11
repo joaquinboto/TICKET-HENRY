@@ -83,37 +83,4 @@ function GridCards({ eventos }) {
 
 export default GridCards;
 
-{
-  /* <Carousel>
-                      <Carousel.Item className="h-48">
-                        <Link to={`/private/events/${feature.id}`}>
-                          <img
-                            className="mx-auto rounded-md mt-4 h-full w-full"
-                            src={feature.image}
-                            alt=""
-                            href={`/events/${feature.id}`}
-                          />
-                        </Link>
-                      </Carousel.Item>
-                      <Carousel.Item className="h-48">
-                      <Link to={`/private/events/${feature.id}`}>
-                          <img
-                            className="mx-auto rounded-md mt-4 h-full w-full"
-                            src={feature.image}
-                            alt=""
-                            href={`/events/${feature.id}`}
-                          />
-                        </Link>
-                      </Carousel.Item>
-                      <Carousel.Item className="h-48">
-                      <Link to={`/private/events/${feature.id}`}>
-                          <img
-                            className="mx-auto rounded-md mt-4 h-full w-full"
-                            src={feature.image}
-                            alt=""
-                            href={`/events/${feature.id}`}
-                          />
-                        </Link>
-                      </Carousel.Item>
-                    </Carousel> */
-}
+
