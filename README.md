@@ -2,7 +2,7 @@
 
 Tienda online de eventos
 
-Visit Page: https://ecommerce-pg-nine.vercel.app/
+Visit Page: https://tickethenry.vercel.app/
 
 ## Funcionalidades
 
