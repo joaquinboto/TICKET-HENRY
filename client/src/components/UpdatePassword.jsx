@@ -97,7 +97,7 @@ const UpdatePassword = (props) => {
           </form>
         </div>
       </div>
-    
+    <ToastContainer/>
     </div>
   )
 }

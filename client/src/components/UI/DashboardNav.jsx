@@ -236,7 +236,6 @@ function DashboardNav({ eventos, user, setActiveState, navigation }) {
                         {({ active }) => (
                           <button
                             onClick={handleClick}
-                            href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block py-2 px-4 text-sm text-gray-700"

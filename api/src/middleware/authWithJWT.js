@@ -17,7 +17,7 @@ passport.use(
       secretOrKey: authConfig.secret,
     },
     (authenticateUser = async (jwtPayload, done) => {
-        console.log(jwtPayload)
+
       try {
         var findUser = await Users.findOne({
           where: { id: jwtPayload.id },

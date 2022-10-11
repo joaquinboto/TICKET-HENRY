@@ -34,9 +34,7 @@ const PasswordRecovery = () => {
   function handleSubmit(e) {
     if(email) {
     e.preventDefault()
-    console.log("este es el email", email)
     dispatch(sendEmailPassword({email: email}))
-    console.log("Despachar")
     setTimeout(() => {
       navigate("/");
   }, 4000)
@@ -47,7 +45,7 @@ const PasswordRecovery = () => {
   }
 
   
-console.log(email)
+
 
 
 

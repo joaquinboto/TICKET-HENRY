@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllEvents } from "../../store/actions";
+import { getAllEvents ,  getStats } from "../../store/actions";
 
 function Stats() {
   const dispatch = useDispatch();
-  const allEvents = useSelector((state) => state.events)
+  const {stats} = useSelector((state) => state)
 
-  const [stock, setStock] = useState(0)
+
 
   useEffect(() => {
     dispatch(getAllEvents())
+    dispatch(getStats())
   }, [dispatch])
 
-function sumaStock(e){
 
-}
 
   return (
     <div className="bg-gray-50 pt-12 sm:pt-16">
@@ -28,7 +27,7 @@ function sumaStock(e){
           </p>
         </div>
       </div>
-      <div className="mt-10 bg-white pb-12 sm:pb-16">
+      <div className="mt-10 bg-white pb-12 sm:pb-16 dark:bg-black">
         <div className="relative">
           <div className="absolute inset-0 h-1/2 bg-gray-50" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -39,7 +38,7 @@ function sumaStock(e){
                     Boletos vendidos
                   </dt>
                   <dd className="order-1 text-5xl font-bold tracking-tight text-indigo-600">
-                    10489
+                    {stats.soldTickets}
                   </dd>
                 </div>
                 <div className="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
@@ -47,7 +46,7 @@ function sumaStock(e){
                     Eventos
                   </dt>
                   <dd className="order-1 text-5xl font-bold tracking-tight text-indigo-600">
-                    310+
+                    {stats.activeEvent}
                   </dd>
                 </div>
                 <div className="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
@@ -55,7 +54,7 @@ function sumaStock(e){
                     Boletos disponibles
                   </dt>
                   <dd className="order-1 text-5xl font-bold tracking-tight text-indigo-600">
-                    89178
+                    {stats.allStock}
                   </dd>
                 </div>
               </dl>

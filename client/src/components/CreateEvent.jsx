@@ -13,8 +13,9 @@ function CreateEvent() {
   const { user } = useSelector((state) => state);
   const [error, setError] = useState({});
   const [valor, setValor] = useState(true)
-  const [artistas, setArtistas] = useState({});
+  const [artistas, setArtistas] = useState("");
   const [input, setInput] = useState({
+    name: "",
     description: "",
     price: 0,
     date: "",
@@ -32,6 +33,9 @@ function CreateEvent() {
     if (input.description.length < 20) {
       errors.description = "Minium 20 characters";
     }
+    if (input.description.length < 5) {
+      errors.name = "Minium 5 characters";
+    }
     if (input.description.length > 255) {
       errors.description = "Max 255 characters";
     }
@@ -40,6 +44,9 @@ function CreateEvent() {
     }
     if (!input.artist.length) {
       errors.artist = "Artist is required";
+    }
+    if (!input.name) {
+      errors.name = "Name is required";
     }
     if (!input.price) {
       errors.price = "Price is required";
@@ -91,8 +98,11 @@ function CreateEvent() {
     const handleArtist = (e, artist) => {
       e.preventDefault()
       let nombre = artist;
+      document.getElementById('artist').value = ''
       if (Object.values(input.artist).includes(nombre)) {
         alert("Artist already exists");
+      } else if(artist.length === 0) {
+        return alert('No artist specified')
       } else {
         setInput({
           ...input,
@@ -116,6 +126,13 @@ function CreateEvent() {
         ...input,
         artist: a,
       });
+      setError(
+        validation({
+          ...input,
+          artist: a
+        })
+      );
+      document.getElementById('artist').value = ''
     };
 
     function handleInputPrice(e) {
@@ -177,6 +194,7 @@ function CreateEvent() {
       alert("Your event is created!")
       setError(validation(input));
       setInput({
+        name: "",
         description: "",
         price: 0,
         date: "",
@@ -248,6 +266,37 @@ function CreateEvent() {
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
               <form onSubmit={handleSubmit} className="space-y-6 mt-6">
+              <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Name
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      onChange={(e) => handleInputChange(e)}
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Name..."
+                      className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    />
+                  </div>
+                  {error.name ?
+                    <div className=" mt-3 rounded-md bg-red-50 p-4">
+                      <div className="flex">
+                        <div className="flex-shrink-0">
+                          <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+                        </div>
+                        <div className="ml-3">
+                          <div className="mt-2 text-center text-red-700">
+                            <ul role="list" className="list-disc space-y-1 pl-5">
+                              {error.name && <p> {error.name}</p>}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    : null}
+                </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Description
@@ -320,12 +369,12 @@ function CreateEvent() {
                   {input.artist &&
                     input.artist.map((artist, idx) => {
                       return (
-                        <p key={idx}>
-                          {artist}{" "}
-                          <button onClick={(e) => handleDeleteArtist(e, artist)}>
+                        <div key={idx}>
+                          <span className="font-semibold" >{artist}</span>
+                          <button className="hover:bg-red-500 mx-3 text-red-700 font-semibold hover:text-black p-2  border border-red-500 hover:border-transparent rounded" onClick={(e) => handleDeleteArtist(e, artist)}>
                             X
                           </button>
-                        </p>
+                        </div>
                       );
                     })}
                 </div>

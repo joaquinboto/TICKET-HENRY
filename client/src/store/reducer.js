@@ -34,7 +34,7 @@ const initialState = {
   comments: [],
   // past orders
   pastOrders: [],
-
+  stats: [],
   currentUsers: []
 };
 
@@ -276,9 +276,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case "DELETE_EVENT_BY_ID":
-      console.log(action.payload);
       let nuevosEventos = state.eventsById.filter(event => event.id !== action.payload)
-      console.log(nuevosEventos);
       return {
         ...state,
         eventsById: nuevosEventos
@@ -306,9 +304,10 @@ function rootReducer(state = initialState, action) {
     }
 
     case 'GET_PAST_ORDERS': {
+
       return {
         ...state,
-        pastOrders: [...state.pastOrders , action.payload]
+        pastOrders: action.payload
       }
     }
 
@@ -344,6 +343,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         currentUsers: action.payload
+      }
+    }
+    case 'GET_STATS' : {
+
+      return {
+        ...state,
+        stats: action.payload
       }
     }
 

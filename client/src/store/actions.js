@@ -159,7 +159,6 @@ export function userDeleteFavorite(userId, idEvent) {
         idEvent: idEvent,
       },
     });
-    console.log(res.data);
     return dispatch({
       type: "DELETE_FAVORITE",
       payload: idEvent,
@@ -309,7 +308,6 @@ export const getCartUser = (cart) => (dispatch) => {
 };
 
 export function checkoutCart(userId, token) {
-  console.log(userId, token);
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -339,7 +337,6 @@ export function sendEmailPassword(payload) {
 }
 
 export function updatePassword(payload) {
-  console.log(payload);
   let { id, password } = payload;
   return async function () {
     let update = await axios.put(`resetpassword/${id}`, payload);
@@ -435,7 +432,6 @@ export const getPastOrders = (userId) => async (dispatch) => {
 export const updateEvent = (data, id) => async (dispatch) => {
   try {
     const updatedEvent = await axios.post(`/event/${id}/update`, data);
-    console.log(data, id);
     return dispatch({
       type: "UPDATE_EVENT",
       payload: data,
@@ -462,7 +458,6 @@ export const upgradeToAdmin = (userId) => async (dispatch) => {
 
   try {
     const result = await axios.put('/upgradeToUser' , {userId})
-    console.log(result)
     return dispatch({
       type: 'UPDATE_USER_TO_ADMIN',
       payload: result.data
@@ -513,4 +508,16 @@ export const unBanned = (userId) => async (dispatch) => {
     console.log(error)
   }
 
+}
+
+export const getStats = () => async (dispatch) => {
+  try {
+    const result = await axios.get('/ticketsSoldAndAvailableAndAvailableEvents')
+    return dispatch({
+      type: 'GET_STATS',
+      payload: result.data
+    })
+  } catch (error) {
+    console.log(error);
+  }
 }

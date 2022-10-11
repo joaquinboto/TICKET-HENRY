@@ -19,7 +19,7 @@ const LoginSuccess = lazy(() => import("./components/UI/LoginSuccess"));
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
       <BrowserRouter>
         <RoutesWithNotFound>
           <Route path="/" element={<Home />} />
