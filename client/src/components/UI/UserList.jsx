@@ -97,21 +97,21 @@ function UserList() {
                           {person.status}
                         </span>
                       </td>
-                      <td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         { person.status === 'User' ? 
-                        (<button className="mx-2 bg-black p-2 rounded-5 text-white" onClick={() => upgradeUser(person.id)}>
+                        (<button className="bg-blue-500 mx-5 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => upgradeUser(person.id)}>
                           Admin
                         </button>) : 
-                        (<button className="mx-2 bg-black p-2 rounded-5 text-white" onClick={()=> upgradeAdmin(person.id)}>
+                        (<button className="bg-blue-500 mx-5 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={()=> upgradeAdmin(person.id)}>
                           User
                         </button>)
                         }
                         {person.status === 'Banned' ? (
-                          <button className="mx-2 bg-black p-2 rounded-5 text-white" onClick={() => unban(person.id)}>
+                          <button className="bg-blue-500 mx-5 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => unban(person.id)}>
                             Desban
                           </button>
                         ): (
-                          <button className="mx-2 bg-black p-2 rounded-5 text-red-800" onClick={() => bannedUser(person.id)}>
+                          <button className="bg-red-600 mx-5 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onClick={() => bannedUser(person.id)}>
                             Ban
                           </button>
                         )}

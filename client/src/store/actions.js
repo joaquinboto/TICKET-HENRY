@@ -514,3 +514,15 @@ export const unBanned = (userId) => async (dispatch) => {
   }
 
 }
+
+export const getStats = () => async (dispatch) => {
+  try {
+    const result = await axios.get('/ticketsSoldAndAvailableAndAvailableEvents')
+    return dispatch({
+      type: 'GET_STATS',
+      payload: result.data
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}

@@ -13,7 +13,7 @@ function CreateEvent() {
   const { user } = useSelector((state) => state);
   const [error, setError] = useState({});
   const [valor, setValor] = useState(true)
-  const [artistas, setArtistas] = useState({});
+  const [artistas, setArtistas] = useState("");
   const [input, setInput] = useState({
     description: "",
     price: 0,
@@ -91,8 +91,11 @@ function CreateEvent() {
     const handleArtist = (e, artist) => {
       e.preventDefault()
       let nombre = artist;
+      document.getElementById('artist').value = ''
       if (Object.values(input.artist).includes(nombre)) {
         alert("Artist already exists");
+      } else if(artist.length === 0) {
+        return alert('No artist specified')
       } else {
         setInput({
           ...input,
@@ -116,6 +119,13 @@ function CreateEvent() {
         ...input,
         artist: a,
       });
+      setError(
+        validation({
+          ...input,
+          artist: a
+        })
+      );
+      document.getElementById('artist').value = ''
     };
 
     function handleInputPrice(e) {
@@ -320,12 +330,12 @@ function CreateEvent() {
                   {input.artist &&
                     input.artist.map((artist, idx) => {
                       return (
-                        <p key={idx}>
-                          {artist}{" "}
-                          <button onClick={(e) => handleDeleteArtist(e, artist)}>
+                        <div key={idx}>
+                          <span className="font-semibold" >{artist}</span>
+                          <button className="hover:bg-red-500 mx-3 text-red-700 font-semibold hover:text-black p-2  border border-red-500 hover:border-transparent rounded" onClick={(e) => handleDeleteArtist(e, artist)}>
                             X
                           </button>
-                        </p>
+                        </div>
                       );
                     })}
                 </div>

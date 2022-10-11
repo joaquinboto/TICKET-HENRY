@@ -17,7 +17,7 @@ const mercadopagoPayment = async (req, res) => {
             back_urls: {
                 failure: "/failure",
                 pending: "/pending",
-                success: "https://ecommerce-pg-nine.vercel.app/private/payment/success",
+                success: "http://localhost:5173/private/payment/success",
             },
             auto_return: "approved",
         };

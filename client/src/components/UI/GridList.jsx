@@ -14,7 +14,7 @@ function GridList({ eventos }) {
   function handleDelete(id) {
     dispatch(deleteEventById(id));
   }
-
+  console.log(eventos);
   return (
     <ul
       role="list"
@@ -29,24 +29,29 @@ function GridList({ eventos }) {
             <div className="flex-1 truncate">
               <div className="flex items-center space-x-3">
                 <h3 className="truncate text-sm font-medium text-gray-900">
-                  {event.artist}
+                  Artists: {event.artist.map(artist => (
+                  <li>
+                    {artist}
+                  </li>
+                  ))}
                 </h3>
-                <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                  {event.stock}
-                </span>
+               
               </div>
               <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
-                {event.price}
+                Price: ${event.price}
               </span>
+              <span className="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                  Stock: {event.stock}
+                </span>
               <p className="mt-1 truncate text-sm text-gray-500">
-                {event.description}
+                Description: {event.description}
               </p>
               <p className="mt-1 truncate text-sm text-gray-500">
                 {event.category}
               </p>
             </div>
             <img
-              className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
+              className="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"
               src={event.image}
               alt=""
             />
@@ -72,10 +77,10 @@ function GridList({ eventos }) {
                   className="bg-blue-200 relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-gray-500"
                 >
                   <DocumentTextIcon
-                    className="h-5 w-5 text-white"
+                    className="h-5 w-5 text-black"
                     aria-hidden="true"
                   />
-                  <span className="ml-3 text-white">Edit</span>
+                  <span className="ml-3 text-black">Edit</span>
                 </a>
               </div>
             </div>
