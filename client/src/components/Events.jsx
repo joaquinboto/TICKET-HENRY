@@ -121,7 +121,6 @@ const Events = () => {
       let filtrado = eventos.filter(
         (el) => filterArr(el.artist, artist) && el.place === place
       );
-      console.log("Dos filtrados ", filtrado);
       setFiltered(filtrado);
     }
     if (category === "-" && artist === "-" && place === "-") {

@@ -55,7 +55,7 @@ const login = async (req, res, next) => {
 const upDateUser = async (req, res) => {
 	const { id } = req.params;
 	const { username, email, password, status, profile_picture, profile_picture_id } = req.body;
-	console.log(req.body);
+
 	try {
 		if (!id) res.status(404).json({ message: 'id is require...' });
 
@@ -104,7 +104,6 @@ const register = async (req, res, next) => {
 		});
 
 		if (alreadyExistsMail.length) {
-			console.log('Email already registered');
 			res.status(400).send('Email already registered');
 			return;
 		}
@@ -114,7 +113,7 @@ const register = async (req, res, next) => {
 		});
 
 		if (alreadyExistsUsername.length) {
-			console.log('Username already registered');
+
 			res.status(400).send('Username already registered');
 			return;
 		}
@@ -333,7 +332,7 @@ const resetPassword = async (req, res, next) => {
 			return res.status(400).send('User has not been found with that ID');
 		if (!password) return res.status(400).send('Password does not match!');
 		let newPassword = await encrypt(password)
-		console.log(newPassword);
+
 		await Users.update(
 			{
 				password: newPassword,
@@ -352,7 +351,7 @@ const resetPassword = async (req, res, next) => {
 
 const changePassword = async (req, res, next) => {
 	let { userId, password } = req.body;
-	console.log(req.body)
+
 	try {
 		let user = await Users.findOne({
 			where: {
@@ -363,7 +362,7 @@ const changePassword = async (req, res, next) => {
 		if (!user)
 			return res.status(400).send('User has not been found with that ID');
 		let newPassword = await encrypt(password)
-		console.log(newPassword);
+
 
 		await Users.update(
 			{

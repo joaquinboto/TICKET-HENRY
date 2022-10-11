@@ -61,6 +61,9 @@ const EventCards = ({ eventos }) => {
                 {user ? <Favorites id={evento.id} /> : null}
               </div>
               <div className="grid justify-items-center">
+              <div className="justify-center">
+               <span>Name: {evento.name}</span>
+              </div>
                 <div className="justify-center">
                   <img
                     className="h-56 w-80 flex-shrink-0 rounded bg-gray-300"
@@ -79,7 +82,7 @@ const EventCards = ({ eventos }) => {
                   </h3>
                 )}
               </div>
-
+              
               <div className="flex justify-around mb-3">
                 <span className=" text-center rounded-lg bg-green-300 px-1.5 py-1.5 text font-medium text-green-800 mt-2">
                   STOCK: {evento.stock}

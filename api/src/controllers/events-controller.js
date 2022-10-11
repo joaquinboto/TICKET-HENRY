@@ -5,6 +5,7 @@ const fsExtra = require("fs-extra");
 
 const createEvent = async (req, res) => {
   const {
+    name,
     description,
     price,
     date,
@@ -19,6 +20,7 @@ const createEvent = async (req, res) => {
 
   try {
     const newEvent = await Event.create({
+      name,
       description,
       price,
       date,
@@ -39,6 +41,7 @@ const createEvent = async (req, res) => {
 
 const updateEvent = async (req, res) => {
   const {
+    name,
     description,
     price,
     date,
@@ -49,13 +52,13 @@ const updateEvent = async (req, res) => {
     image,
     imageId,
   } = req.body;
-  console.log(req.body);
+
   const { id } = req.params;
   try {
     if (!id) res.status(404).json({ message: "id is require..." });
     let eventUpdate = await Event.findOne({ where: { id } });
     if (!eventUpdate) res.status(404).json({ message: "event not found..." });
-
+    if (name) await Event.update({ name }, { where: { id } });
     if (description) await Event.update({ description }, { where: { id } });
     if (price) await Event.update({ price }, { where: { id } });
     if (date) await Event.update({ date }, { where: { id } });
@@ -91,7 +94,7 @@ const deleteEvents = async (req, res) => {
         return res.status(404).send("Event not found");
       }
 
-      console.log(deleteEvent);
+
       res.status(200).send("The event was removed successfully");
     } catch (error) {
       console.log(error);
@@ -110,7 +113,7 @@ const deleteEvents = async (req, res) => {
       if (response[0] === 0) {
         return res.status(404).send("Event not found");
       }
-      console.log(response);
+
       res.status(200).send("The event was removed successfully");
     } catch (error) {
       console.log(error);
@@ -134,7 +137,7 @@ const getEvents = async (req, res) => {
 
 const getEventDetail = async (req, res, next) => {
   const { id } = req.params;
-  console.log(id);
+
   let detail;
 
   if (id.includes("-")) {
@@ -144,7 +147,7 @@ const getEventDetail = async (req, res, next) => {
           id: id,
         },
       });
-      console.log(detail);
+
     } catch (error) {
       console.log(error);
     }
@@ -158,6 +161,7 @@ const getEventDetail = async (req, res, next) => {
       const elem = response.dataValues;
       detail = {
         id: elem.id,
+        name: elem.name,
         description: elem.description,
         price: elem.price,
         date: elem.date,
@@ -202,6 +206,7 @@ const getEventsDetailDb = async (req, res) => {
       const elem = response.dataValues;
       detail = {
         id: elem.id,
+        name: elem.name,
         description: elem.description,
         price: elem.price,
         date: elem.date,
@@ -227,7 +232,7 @@ const getEventsById = async (req, res) => {
     const eventsById = await Event.findAll({
       where: { userId: id, isActive: true },
     });
-    // console.log(eventsById);
+
     res.status(200).json(eventsById);
   } catch (error) {
     res.send(error.message);
@@ -236,25 +241,27 @@ const getEventsById = async (req, res) => {
 
 const getEventHome = async (req, res) => {
   try {
-    let eventos;
+
     const evento1 = await Event.findOne({
       where: {
         stock: stock <= 200,
       },
     });
     res.status(200).json(evento1);
-    console.log(evento1);
+
   } catch (error) {
     console.log(error);
   }
 };
 
 const ticketsSoldAndAvailableAndAvailableEvents = async (req, res) => {
- 
+   try {
+    const { count, rows } = await Event.findAndCountAll({
+      where: {
+        isActive: true,
+      }
+    });
 
-  try {
-    const { count, rows } = await Event.findAndCountAll();
-    console.log(count);
 
     const currentStock = rows.map((el) => el.currentStock).reduce((acc, row) => acc + row, 0);
     const stock = rows.map((el) => el.stock).reduce((acc, row) => acc + row, 0);

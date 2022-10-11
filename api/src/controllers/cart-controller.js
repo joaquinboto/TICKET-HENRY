@@ -12,7 +12,7 @@ const getCart = async (req, res, next) => {
         model: Users,
         attributes: ["username", "profile_picture", "status"],
         model: Event,
-        attributes: ["id", "description", "price", "artist", "image"],
+        attributes: ["name" , "id", "description", "price", "artist", "image"],
         through: { attributes: ["amount", "subtotal"] },
       },
     });
@@ -34,7 +34,7 @@ const getAllCarts = async (req, res, next) => {
       },
       include: {
         model: Event,
-        attributes: ["id", "description", "price", "artist" , 'image'],
+        attributes: ["name" , "id", "description", "price", "artist" , 'image'],
         through: { attributes: ["amount"] },
       },
     });

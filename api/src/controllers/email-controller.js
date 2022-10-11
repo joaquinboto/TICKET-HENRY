@@ -44,7 +44,7 @@ const sendMailWelcome = async (us, mail) => {
     
     try {
         const info = await transporter.sendMail(mailOptions)
-        console.log("Correo enviado satisfactoriamente")
+
     } catch (error) {
         console.log(error)
     }
@@ -76,7 +76,7 @@ const emailReset = async (email, id) => {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log("correo enviado correctamente");
+
   } catch (error) {
     console.log(error.message);
   }
@@ -108,7 +108,6 @@ const invoiceMail = async (name, email, total) => {
   };
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log("correo enviado correctamente");
   } catch (error) {
     console.log(error.message);
   }
@@ -143,7 +142,7 @@ const sendInvoice = async (req, res, next) => {
 
 const passwordRecovery = async (req, res, next) => {
   let { email } = req.body;
-  console.log("Esto es lo que llega al back", email);
+  
 
   try {
     let user = await Users.findOne({

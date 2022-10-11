@@ -140,7 +140,7 @@ export default function PopOverCart() {
                                       <div className="flex justify-between text-base font-medium text-gray-900">
                                         <h3>
                                           <a href="#">
-                                            {item.description}
+                                            {item.name}
                                           </a>
                                         </h3>
                                         <div className="flex flex-col">

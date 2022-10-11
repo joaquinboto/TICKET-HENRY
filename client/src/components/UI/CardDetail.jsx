@@ -20,7 +20,7 @@ const CardDetail = () => {
   const dispatch = useDispatch();
   const eventDetail = useSelector((state) => state.eventsDetail);
   const { user } = useSelector((state) => state);
-  const [review, setReview] = useState({});
+
 
   useEffect(() => {
     dispatch(getEventDetail(id));
@@ -54,7 +54,10 @@ const CardDetail = () => {
               </div>
               <div className="sm:col-span-8 lg:col-span-7">
                 <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
-                  {eventDetail.artist}
+                  Name: {eventDetail.name}
+                </h2>
+                <h2 className="text-2xl text-gray-900 sm:pr-12">
+                  Artistas: {eventDetail.artist}
                 </h2>
 
                 <section aria-labelledby="information-heading" className="mt-2">

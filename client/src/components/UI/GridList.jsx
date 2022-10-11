@@ -7,6 +7,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEventById } from "../../store/actions";
+import {Link } from 'react-router-dom'
 
 function GridList({ eventos }) {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ function GridList({ eventos }) {
   function handleDelete(id) {
     dispatch(deleteEventById(id));
   }
-  console.log(eventos);
+
   return (
     <ul
       role="list"
@@ -27,7 +28,10 @@ function GridList({ eventos }) {
         >
           <div className="flex w-full items-center justify-between space-x-6 p-6">
             <div className="flex-1 truncate">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-start flex-col space-x-3">
+                <h3 className="truncate text-sm font-medium text-gray-900">
+                Name: {event.name}
+                </h3>
                 <h3 className="truncate text-sm font-medium text-gray-900">
                   Artists: {event.artist.map(artist => (
                   <li>
@@ -47,7 +51,7 @@ function GridList({ eventos }) {
                 Description: {event.description}
               </p>
               <p className="mt-1 truncate text-sm text-gray-500">
-                {event.category}
+                Category: {event.category}
               </p>
             </div>
             <img

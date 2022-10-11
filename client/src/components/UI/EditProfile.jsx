@@ -39,11 +39,10 @@ export default function EditProfile() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [active, setActive] = useState(0);
-  const usuario = JSON.parse(localStorage.user);
-  const favoritos = usuario.favorites;
+  const {allFavourites} = useSelector((state) => state);
   const eventos = useSelector((state) => state.events);
   const [datos, setDatos] = useState({
-    profile_picture: "",
+    profile_picture: user.profile_picture,
     profile_picture_id: "",
     username: "",
   });
@@ -63,7 +62,7 @@ export default function EditProfile() {
 
   useEffect(() => {
     dispatch(getAllEvents());
-    user ? dispatch(userGetFavorite(user.id)) : null;
+    dispatch(userGetFavorite(user.id))
   }, [dispatch, user]);
 
   async function handleFile(e) {
@@ -92,7 +91,7 @@ export default function EditProfile() {
     }
   }
 
-  const eventsFavourites = eventos.filter((el) => recArr(el.id, favoritos));
+  const eventsFavourites = eventos.filter((el) => recArr(el.id, allFavourites));
   
   function handleChange(e) {
     setDatos({
@@ -372,6 +371,7 @@ export default function EditProfile() {
                                 <input
                                   onChange={(e) => handleChange(e)}
                                   type="text"
+                                  placeholder={user.username}
                                   className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                 />
                                 <span className="ml-4 flex-shrink-0"></span>

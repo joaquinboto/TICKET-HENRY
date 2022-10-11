@@ -304,7 +304,7 @@ function rootReducer(state = initialState, action) {
     }
 
     case 'GET_PAST_ORDERS': {
-      console.log(action.payload)
+
       return {
         ...state,
         pastOrders: action.payload
