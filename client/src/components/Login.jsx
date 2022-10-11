@@ -60,7 +60,7 @@ function Login() {
 
   const handleGithubSignIn = async () => {
     try {
-      
+
       await gitHubSignIn()
     } catch (error) {
       console.log(error)
@@ -72,6 +72,7 @@ function Login() {
     dispatch(loginAuth(input));
     setInput({
       email: "",
+      
       password: "",
     });
 
