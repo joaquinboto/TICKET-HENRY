@@ -2,8 +2,8 @@
 
 Tienda online de eventos
 
-- Visit Page: https://tickethenry.vercel.app/
-- Original Repository: https://github.com/LuisDanielRB/ecommerce_pg
+- Sitio: https://tickethenry.vercel.app/
+- Repositorio original: https://github.com/LuisDanielRB/ecommerce_pg
 
 ## Funcionalidades
 
