@@ -42,7 +42,7 @@ function Navbar() {
 
   const userNavigation = [
     { name: "Settings", href: `/private/user/${id}/profile`, current: true },
-    { name: "Log out", href: "#", current: true },
+    { name: "Log out", href: "#", onClick: handleClick, current: true },
     { name: "Dashboard", href: "/admindashboard" },
   ];
 
@@ -168,7 +168,6 @@ function Navbar() {
                             {({ active }) => (
                               <button
                                 onClick={handleClick}
-                                href="#"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block py-2 px-4 text-sm text-gray-700"
@@ -253,20 +252,22 @@ function Navbar() {
             </div>
 
             <Popover.Panel as="nav" className="lg:hidden" aria-label="Global">
-              <div className="border-t border-gray-200 pt-4 pb-3">
+              {user ? (
+                <div className="border-t border-gray-200 pt-4 pb-3">
                 <div className="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
                   <div className="flex-shrink-0">
-                    <img className="h-10 w-10 rounded-full" alt="" />
+                    <img src={user.profile_picture} className="h-10 w-10 rounded-full" alt="" />
                   </div>
                   <div className="ml-3">
                     <div className="text-base font-medium text-gray-800">
-                      {/* {usuario.name} */}
+                    <p>{user.username}</p>
                     </div>
                     <div className="text-sm font-medium text-gray-500">
-                      {/* {usuario.email} */}
+                    <p>{user.email}</p>
                     </div>
                   </div>
                   <button
+                  onClick={handleCartClick}
                     type="button"
                     className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
@@ -279,6 +280,7 @@ function Navbar() {
                     <a
                       key={item.name}
                       href={item.href}
+                      onClick={item.onClick}
                       className="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
                     >
                       {item.name}
@@ -286,6 +288,29 @@ function Navbar() {
                   ))}
                 </div>
               </div>
+              ): (
+                <div className="flex justify-center flex-col items-center">
+                <div>
+                  <Link
+                    onClick={() => reset()}
+                    to={"/login"}
+                    className="ml-6 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    Login
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    onClick={() => reset()}
+                    to={"/register"}
+                    className="ml-6 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    Sig In
+                  </Link>
+                </div>
+              </div>
+              )}
+              
             </Popover.Panel>
           </>
         )}

@@ -175,7 +175,7 @@ function Login() {
               </button>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 sm:flex-col">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300" />
@@ -187,7 +187,7 @@ function Login() {
                 </div>
               </div>
 
-              <div className="flex justify-around w-96">
+              <div className="flex justify-around w-96 sm:flex-col ">
                 <div>
                   <GoogleButton onClick={handleGoogleSignIn} />
                 </div>

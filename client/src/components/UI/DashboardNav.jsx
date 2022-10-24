@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { userSignOut } from "../../store/actions";
 import { UserAuth } from "../../firebase/context";
 import logo from "../../logo/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -23,6 +24,7 @@ function classNames(...classes) {
 function DashboardNav({ eventos, user, setActiveState, navigation }) {
   const dispatch = useDispatch();
   const { logOut } = UserAuth();
+  const navigate = useNavigate()
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [detailOpen, setDetailOpen] = useState(false);
