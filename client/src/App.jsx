@@ -7,9 +7,7 @@ import PasswordRecovery from "./components/PasswordRecovery";
 import { AdminDashboard } from "./components/Private";
 import AdminDashboardEdit from "./components/Private/Dashboard/AdminDashboardEdit";
 import UpdatePassword from "./components/UpdatePassword";
-import { useEffect } from "react";
-import { useDispatch , useSelector } from "react-redux";
-import { getCart } from "./store/actions";
+import { AnimatePresence  } from 'framer-motion'
 const Login = lazy(() => import("./components/Login"));
 const Register = lazy(() => import("./components/Register"));
 const Private = lazy(() => import("./components/Private/Private"));
@@ -17,9 +15,11 @@ const Home = lazy(() => import("./components/Home"));
 const Events = lazy(() => import("./components/Events"));
 const LoginSuccess = lazy(() => import("./components/UI/LoginSuccess"));
 
+
 function App() {
   return (
     <div className="App ">
+      <AnimatePresence>
       <BrowserRouter>
         <RoutesWithNotFound>
           <Route path="/" element={<Home />} />
@@ -51,6 +51,7 @@ function App() {
           />
         </RoutesWithNotFound>
       </BrowserRouter>
+      </AnimatePresence>
     </div>
   );
 }
